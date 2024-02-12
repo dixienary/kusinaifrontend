@@ -1,0 +1,98 @@
+.container{
+    width:100vw;
+    height:100vh;
+    background:#111;
+    display:flex;
+    flex-direction:row;
+    .history{
+        width: 10vw;
+        /* border: 1px solid black; */
+        height:95vh;
+
+    }
+    
+    .box{
+        border:1px solid black;
+      
+        background-color:black;
+    
+        width:90vw;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:space-between;
+        overflow-y:auto;
+        position:relative;
+        bottom:0;
+       
+
+        .convo{
+            padding-left:22vw;
+            padding-right:22vw;
+            box:1px solid white;
+            width:100%;
+            background:black;
+            height: 90vh;
+            color:white;
+            overflow-y:auto;
+            scroll-behavior:smooth;
+
+            .greetings{
+                font-size:50px;
+                background:linear-gradient(30deg,cyan, violet,#ff9999);
+                width:fit-content;
+                -webkit-background-clip: text;
+                text-fill-color: transparent;
+                -webkit-text-fill-color: transparent;
+            }
+          
+
+            
+        }
+
+        .promptContainer{
+            display:flex;
+            gap:2em;
+            align-items:center;
+            border:1px solid gray;
+            border-radius:25px;
+            
+            .prompt{
+                width: 40vw;
+                height: 5em;
+                border-radius:25px;
+                padding:2em;
+                background:linear-gradient(30deg, #111, black);
+                color:white;
+                border:none;
+              
+
+               
+            }
+            
+
+            .prompt:focus{
+                outline:none;
+                color:white;
+            }
+          
+          
+
+            .promptButton{
+                margin-right:2em;
+                border-radius:50%;
+                padding:10px;
+
+            }
+            .promptButton:hover{
+                outline:none;
+             
+            }
+            .promptButton:focus{
+                outline:none;
+            }
+        }
+        
+        
+    }
+}

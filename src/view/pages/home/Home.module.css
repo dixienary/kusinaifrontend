@@ -1,0 +1,118 @@
+.container{
+    padding:5em;
+    width:100vw;
+    background:linear-gradient(to right,black,#000033,black);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    .light{
+        width:0;
+        height:0;
+        background:;
+        position:absolute;
+        top:0;
+        border-radius:50%;
+        box-shadow:0px 0px 40vw 17vw  #0086b3;
+
+    }
+    
+
+    .box{
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(17, 25, 40, 0.75);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+        height:80vh;
+        width: 85vw;
+
+        .innerBox{
+            height:80vh;
+            width:90vw;
+            display:flex;
+            justify-content:space-evenly;
+            align-items:center;
+            padding:5em;
+           
+
+            .heading{
+                color:white;
+                font-size:5vw;
+                margin-bottom:1em;
+                .subheading{
+                    font-size:3.5vw;
+                    color:cyan;
+                }
+            }
+
+            .food {
+                margin-top:10em;
+                margin-left:5em;
+                width: 40vw;
+                height: 40vw;
+            }
+
+            
+            
+          
+         
+             
+
+         
+        }
+
+       
+       
+    }
+
+    .moreDetails{
+        margin-top:5em;
+        
+        width:85vw;
+        border-radius:15px;
+        /* background:gray; */
+        color:white;
+        .whoiam{
+            display:flex;
+            justify-content:space-between;
+            width:85vw;
+
+
+            .who{
+                padding:2em;
+                height:15vw;
+                width:15vw;
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                background-color:rgba(17, 25, 40, 0.75);
+                border: 1px solid rgba(255, 255, 255, 0.125);
+                border-radius:15px;
+            }
+            .iam{
+                padding:2.5em;
+                height:15vw;
+                width:65vw;
+                background:rgba(17, 25, 40, 0.75);
+                border-radius:15px;
+                border: 1px solid rgba(255, 255, 255, 0.125);
+            }
+
+        }
+
+
+        .footer{
+            height:20vw;
+            width:85vw;
+            background:rgba(17, 25, 40, 0.75);
+            border-radius:15px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+       
+    }
+
+
+}
+
+
