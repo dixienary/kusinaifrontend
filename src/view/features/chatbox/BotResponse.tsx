@@ -1,7 +1,7 @@
 //this component contains the model which determines the response to return
 
 
-export const BotResponse = (userMessage:string):string => {
+export const BotResponse = (userMessage:string):object => {
 
 //dictate which part of conversation: 0 = intro, 1 = next step etc.
 let level:number = 0; 
@@ -17,7 +17,13 @@ let level:number = 0;
   const max = intro.length - 1;
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   //this variable holds the string/message to return
-  let botMessage:string = ""; 
+  let message = {
+    intent:"",
+    response:"",
+    img:"",
+    title:"",
+    instruction:""
+  }
   //holds an Array of string, the sentence is split by blank space  
   userMessage = userMessage.toLowerCase();
   userMessage = userMessage.replaceAll(/,\s*/g, " ");
@@ -27,41 +33,47 @@ let level:number = 0;
   //GREETINGS
   //initial response
   if( userMessage == "hi"){
-    botMessage ="Hello! "+intro[randomNumber];
+    message.response ="Hello! "+intro[randomNumber];
+    message.img = "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
   }else if(userMessage == "hello" || userMessage == "Hello" || userMessage == "ello" || userMessage == "Helo"){
-    botMessage = "Hi! "+intro[randomNumber];
+    message.response = "Hi! "+intro[randomNumber];
   }
   
 
   if (userMessage.includes("afternoon") || userMessage.includes("good afternoon") || userMessage.includes("good afternoon!") || userMessage.includes("afternoon!") ||
   arrayUserMessage.includes("noon") || arrayUserMessage.includes("afti") || arrayUserMessage.includes("aftrn")){
-    botMessage = "Good afternoon! "+intro[randomNumber]
+    message.response = "Good afternoon! "+intro[randomNumber]
   }else if (userMessage.includes("morning")){
-    botMessage = "Good morning! "+intro[randomNumber]
+    message.response = "Good morning! "+intro[randomNumber]
   }else if (userMessage.includes("evening") || userMessage.includes("eve") || userMessage.includes("evenin") || userMessage.includes("evnng") || userMessage.includes("Evening")){
-    botMessage = "Good evening! "+intro[randomNumber]
+    message.response = "Good evening! "+intro[randomNumber]
   }
 
  //INGREDIENTS
  if (arrayUserMessage.includes("pork")){
   if (arrayUserMessage.includes("gata")){
-    botMessage = "bicol express(pork)"
+    message.response = "I suggest  bicol express(pork) recipe",
+    message.img = "https://debescawayancampusportal.com/kusina/bicolrecipe/porkbicolexpress.jpg"
+
+    message.title = "bicol express"
   }else if (arrayUserMessage.includes("toyo")){
-    botMessage = "pork adobo"
+    message.response = "pork adobo"
   }else{
-    botMessage =`Pwde:
+    message.response =`Pwde:
     -adobo,bicol express or inihaw`
   }
 }else if (userMessage.includes("fish")){
-  botMessage = "kinunot"
+  message.response = "kinunot"
 }else if (userMessage.includes("chicken")){
-  botMessage = "fried chicken"
+  message.response = "fried chicken"
 }
   
 
  
   console.log(arrayUserMessage)
 
-  return botMessage;
+  let sample:object;
+
+  return message;
   
 }

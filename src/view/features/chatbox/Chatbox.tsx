@@ -7,22 +7,38 @@ import BotAvatar from "../../assets/robotchef.png"
 
 interface convoInterface{
     userMessage:string,
-    botMessage:string,
+    botMessage:{
+      intent:string,
+      response:string,
+      img:string,
+      title:string,
+      instruction:string
+    }
 }
-
-
 
 const Chatbox = () => {
     //computer response
-    const [message, setMessage] = useState<string>("");
+    const [message, setMessage] = useState<object>({
+      intent:"",
+      response:"",
+      img:"",
+      title:"",
+      instruction:""
+    });
     //the current not yet complete user question
-    const [ prompt, setPrompt] = useState<string>();
+    const [ prompt, setPrompt] = useState<string>("");
     //the complete user question
     const [displayPrompt, setDisplayPrompt] = useState<string>("")
     //contains all session convo
     const [convo , setConvo] = useState<Array<convoInterface>>([{
         userMessage:"",
-        botMessage:"What are your ingredients for today?",
+        botMessage:{
+          intent:"",
+          response:"What are your ingredients today?",
+          img:"",
+          title:"",
+          instruction:""
+        }
     }])
 
     const convoRef = useRef(null)
@@ -50,29 +66,29 @@ const Chatbox = () => {
     useEffect(()=>{
         // add the user and bot message to database every new prompt
         // axios.post() ....
-        const x = { userMessage:displayPrompt,botMessage:message}
+        // const x = { userMessage:displayPrompt,botMessage:message}
 
-        try {
-            const response =  axios.post(
-              // 'http://localhost:5000/api/v1/convo', // Replace with your actual API endpoint
-              x, // Data to send in the request body
-              {
-                headers: {
-                  // Add any necessary headers, e.g., for authentication
-                  'Content-Type': 'application/json', // Ensure Content-Type is set for JSON data
-                },
-              }
-            );
+        // try {
+        //     const response =  axios.post(
+        //       // 'http://localhost:5000/api/v1/convo', // Replace with your actual API endpoint
+        //       x, // Data to send in the request body
+        //       {
+        //         headers: {
+        //           // Add any necessary headers, e.g., for authentication
+        //           'Content-Type': 'application/json', // Ensure Content-Type is set for JSON data
+        //         },
+        //       }
+        //     );
         
-            // Handle successful response
-            console.log('Response data:', response.data);
-            // Update UI or clear form data
+        //     // Handle successful response
+        //     console.log('Response data:', response.data);
+        //     // Update UI or clear form data
         
-          } catch (error) {
-            // Handle errors
-            console.error('Error:', error);
-            // Display an error message to the user
-          }
+        //   } catch (error) {
+        //     // Handle errors
+        //     console.error('Error:', error);
+        //     // Display an error message to the user
+        //   }
 
         // axios.post("http:localhost:5000/api/v1/convo",JSON.stringify(x))
         // axios.post("https://api-two-sandy.vercel.app/convo",x)
@@ -83,7 +99,6 @@ const Chatbox = () => {
 
     //check convo
     console.log(convo)
-    
     
 
   return (
@@ -100,7 +115,7 @@ const Chatbox = () => {
                           </div>
                           <p style={{fontSize:"30px"}}>
                             
-                            {convo[0].botMessage}
+                            {convo[0].botMessage.response}
                             </p>
                     </div> 
               </div>
@@ -121,9 +136,11 @@ const Chatbox = () => {
                           </div> 
                           <img src={BotAvatar} alt="Your SVG" style={{height:"50px"}} />
                           <div style={{left:"0px",borderRadius:"15px",background:"linear-gradient(30deg,#222, #0d0d0d)",padding:"20px"}}>
-                              {convo.botMessage} 
-                              <br></br>
-                              {convo.botMessage}
+                         
+                            {convo.botMessage.response}
+                            <img src={convo.botMessage.img} />
+                            <h1><b>{convo.botMessage.title}</b></h1>
+                            {convo.botMessage.instruction}
                            </div>
                            
                         </div>
