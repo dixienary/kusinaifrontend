@@ -7,15 +7,32 @@ import GoogleIcon from "../../assets/google.svg"
 import FacebookIcon from "../../assets/facebook.svg"
 import Who from "../../assets/who.png"
 import { NavLink, useNavigate } from "react-router-dom";
+import {useContext, useState} from "react"
+import UserInfoContext from "../../../context/UserInfo/UserInfoContext";
 
 const Login = () => {
     const navigate = useNavigate()
+    const {userInfo, setUserInfo} = useContext(UserInfoContext);
 
     const logCheck = (e)=>{
         e.preventDefault()
         console.log("Hello")
         navigate("/login/x")
     }
+
+    const handleLogin = async (e)=>{
+        e.preventDefault()
+        setUserInfo( {username:e.target.value, password:"",role:"client"})
+        console.log(userInfo)
+        // try{
+        //     const res = await axios.post("/auth/login", credentials);
+        //     dispatch({ type: "LOGIN_SUCCESS", payload:res.data})
+        //     navigate("/app")
+        // } catch(err){
+        //     dispatch({type:"LOGIN_FAILURE", payload:err.response.data})
+        // }
+    }
+
   return (
     <div className={CSS.layout}>
         <div className={CSS.container}>
@@ -23,8 +40,6 @@ const Login = () => {
 
             <h1 className={CSS.welcome}>Welcome to Kusin-AI</h1>
             <form>
-
-                
                     <TEInput
                      type="email"
                      id="email"
@@ -32,7 +47,10 @@ const Login = () => {
                      size="lg"
                      required
                      style={{width:"300px"}}
-                    ></TEInput>
+                     onChange={handleLogin}
+                    >
+
+                    </TEInput>
                     
                 
                 <div onClick={logCheck}>

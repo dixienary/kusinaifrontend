@@ -7,6 +7,7 @@ import Login from "../view/pages/login/Login"
 import Register from "../view/pages/register/Register"
 import LoginMain from "../view/pages/login/LoginMain"
 import App from "../view/pages/app/App"
+import XYZ from "../view/basic/xyz"
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path:"/register",
         element:<Register/>
+    },
+    {
+        path:"/sample",
+        element:<XYZ/>
     }
 ]) 
 

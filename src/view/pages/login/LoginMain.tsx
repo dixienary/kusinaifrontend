@@ -4,14 +4,37 @@ import { TEInput } from "tw-elements-react";
 import CSS from "./Login.module.css"
 import robotchefImage from './robot.png';
 import { useNavigate } from "react-router-dom";
-
+import UserInfoContext from "../../../context/UserInfo/UserInfoContext";
+import {useContext,useState,useEffect} from "react"
 const LoginMain = () => {
     const navigate = useNavigate()
+    const {userInfo, setUserInfo} = useContext(UserInfoContext);
+    const [username,setUsername] = useState(userInfo.username)
+    const [password, setPassword] = useState()
 
+    const handleLogin = (e)=>{
+      e.preventDefault()
+      console.log(userInfo)
+     }
+
+     useEffect(()=>{
+      setUserInfo( {username:username, password:password,role:"client"})   
+     },[username,password])
+    
+    const handleUserName = (e)=>{
+      e.preventDefault()
+      setUsername(e.target.value)
+    }
+    const handlePassword = (e)=>{
+      e.preventDefault()
+      setPassword(e.target.value)
+      console.log(password)
+    }
+ 
+  
     const logCheck = (e)=>{
-        e.preventDefault()
-        console.log("Hello")
-        navigate("/app")
+        // console.log("Hello")
+        navigate("/register")
     }
   return (
     <div className={CSS.layout}>
@@ -23,12 +46,14 @@ const LoginMain = () => {
                 
                     <TEInput
                      type="email"
+                     value={userInfo.username}
                      id="email"
                      label="Email"
                      size="lg"
                      required
                      style={{width:"300px"}}
-                    ></TEInput>
+                     onChange={handleUserName}
+                      ></TEInput>
                    <TEInput
                      type="password"
                      id="password"
@@ -36,10 +61,12 @@ const LoginMain = () => {
                      size="lg"
                      required
                      style={{width:"300px"}}
+                     onChange={handlePassword}
                     ></TEInput>
+                  
                      
                 
-                <div onClick={logCheck}><Button>Proceed</Button></div>
+                <div onClick={handleLogin}><Button>Proceed</Button></div>
            
             </form>
 
