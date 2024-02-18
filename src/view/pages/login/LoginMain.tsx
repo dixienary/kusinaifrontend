@@ -20,7 +20,7 @@ const LoginMain = () => {
       e.preventDefault()
       console.log(userInfo)
       try {
-        const response = await axios.post('https://api-h6vlq79qq-mrgreenxgreens-projects.vercel.app//api/v1/auth/login', userInfo
+        const response = await axios.post('http://localhost:5000/api/v1/auth/login', userInfo
         );
         console.log("check")
         console.log(response)

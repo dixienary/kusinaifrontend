@@ -68,7 +68,7 @@ const Register = () => {
     event.preventDefault(); // Prevent default form submission behavior
     console.log("click!")
     try {
-      const response = await axios.post('https://api-h6vlq79qq-mrgreenxgreens-projects.vercel.app//api/v1/auth/register', x
+      const response = await axios.post('http://localhost:5000/api/v1/auth/register', x
       );
       if (response.status == 200) {
         setMessage('Registration successful!');
