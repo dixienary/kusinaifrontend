@@ -48,41 +48,22 @@
 
 // export default XYZ
 
+import "./xyz.css"
 
-import axios from "axios";
-import { useState, useEffect } from "react";
 
-const XYZ = () => {
-  const [data, setData] = useState([]); // Set initial state to an empty array
-
-  // Use useEffect to fetch data after component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/v1/convo/intent");
-        setData(response.data); // Update state with the fetched data
-      } catch (error) {
-        console.error(error);
-        // Handle error appropriately, e.g., display an error message
-      }
-    };
-
-    fetchData();
-  }, []); // Run the effect only once after component mounts
+const XYZ =  () => {
+  
+  
 
   return (
-    <div>
-      {data.length > 0 && ( // Check if data is available before rendering
-        <ul>
-          {data.map((message) => (
-            <li key={message._id} style={{ color: "red" }}>
-              <b>Intent:</b> {message.botMessage.intent} - <b>Created At:</b>{" "}
-              {message.createdAt.toLocaleString()}
-            </li>
-          ))}
-        </ul>
-      )}
+   <div style={{width:"500px"}}>
+    <div className="container">
+      <p className="text">
+        The quick brown fox jumped over the lazy dog.
+      </p>
     </div>
+
+   </div>
   );
 };
 

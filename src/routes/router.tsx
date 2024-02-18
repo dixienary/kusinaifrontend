@@ -8,6 +8,8 @@ import Register from "../view/pages/register/Register"
 import LoginMain from "../view/pages/login/LoginMain"
 import App from "../view/pages/app/App"
 import XYZ from "../view/basic/xyz"
+import History from "../view/pages/history/History"
+import Account from "../view/pages/account/Account"
 
 
 const router = createBrowserRouter([
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
     {
         path:"/register",
         element:<Register/>
+    },
+    {
+        path:"/account",
+        element:<Account/>
+    },
+    {
+        path:"/history",
+        element:<History/>
     },
     {
         path:"/sample",

@@ -10,7 +10,7 @@ export default function CardOne(): JSX.Element {
             <img
               style={{width:"100em"}}
               className="rounded-t-lg"
-              src="https://debescawayancampusportal.com/kusina/avatar/dixie.jpg"
+              src="https://debescawayancampusportal.com/kusina/avatar/leslie.jpg"
               alt="" />
             <a href="#!">
               <div
@@ -21,7 +21,7 @@ export default function CardOne(): JSX.Element {
         <div className="p-6">
           <h5
             className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-            Dixie Molleda
+            Leslie Nicole Alangilan
           </h5>
           <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
             Kusin-AI Developer

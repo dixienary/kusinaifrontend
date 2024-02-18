@@ -4,6 +4,8 @@ import Food from "../../assets/biggs.png"
 import { TEAnimation } from "tw-elements-react";
 import Who from "../../assets/piratechef.png"
 import Card from "../../basic/card/Card";
+import Card2 from "../../basic/card/Card2";
+import Card3 from "../../basic/card/Card3";
 import { NavLink } from "react-router-dom";
 
 
@@ -22,15 +24,8 @@ const Home = () => {
         <img src={RobotChef} style={{width:"13vw",height:"13vw",position:"absolute",top:"-8vh",left:"1.5vw"}}/>
         <div className={CSS.innerBox}>
           <div className={CSS.heading}>
-          <TEAnimation
-            animation="[fly-in-right_0.5s]"
-            start="onScroll"
-            repeatOnScroll
-            showOnLoad
-            className="[&>svg]:w-11"
-          >
+         
             Kusin-AI
-            </TEAnimation>
             <TEAnimation
             animation="[fly-in-left_0.5s]"
             start="onScroll"
@@ -43,8 +38,9 @@ const Home = () => {
             <NavLink to="/login">
             <button
               type="button"
+
               className="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-lg font-medium leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-              style={{width:"18vw"}}
+              style={{width:"18em"}}
             >
               Get started
             </button>
@@ -74,7 +70,7 @@ const Home = () => {
             showOnLoad
             className="[&>svg]:w-11"
           >
-            <img src={Who} />
+            <img src={Who} className={CSS.robotWho}/>
             </TEAnimation>
           </div>
           <div className={CSS.iam}>
@@ -95,8 +91,8 @@ const Home = () => {
      
 
         {/* featured photos */}
-        <div style={{width:"85vw",height:"30em",display:"flex",justifyContent:"center",gap:"5em",marginTop:"5em"}}>
-          <div style={{height:"50px",width:"20em"}}>
+        <div className={CSS.featuredPhotos}>
+          <div className={CSS.cards}>
           <TEAnimation
             animation="[fade-in-left_1s_ease-in-out]"
             start="onScroll"
@@ -107,7 +103,7 @@ const Home = () => {
             <Card/>
             </TEAnimation> 
           </div>
-          <div style={{height:"50px",width:"20em"}}>
+          <div className={CSS.cards}>
           <TEAnimation
             animation="[fade-out_1s_ease-in-out]"
             start="onScroll"
@@ -115,10 +111,10 @@ const Home = () => {
             showOnLoad
             className="[&>svg]:w-11"
           >
-            <Card/>
+            <Card2/>
             </TEAnimation> 
           </div> 
-          <div style={{height:"50px",width:"20em"}}>
+          <div className={CSS.cards}>
           <TEAnimation
             animation="[fade-in-right_1s_ease-in-out]"
             start="onScroll"
@@ -126,19 +122,19 @@ const Home = () => {
             showOnLoad
             className="[&>svg]:w-11"
           >
-            <Card/>
+            <Card3/>
             </TEAnimation> 
           </div>
         </div>
 
-        <div className={CSS.footer}>
+        {/* <div className={CSS.footer}>
            Kusin-AI developers:
            <div>one</div>
            <div>two</div>
            <div>three</div>
 
         </div>
-      
+       */}
       </div>
      
       

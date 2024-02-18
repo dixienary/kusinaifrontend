@@ -4,6 +4,7 @@ import UserInfoContext from "./UserInfoContext"
 
 interface userInfoInterface{
   username:string,
+  name:string,
   password:string,
   role:string,
 }

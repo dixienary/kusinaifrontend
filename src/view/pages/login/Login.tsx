@@ -17,20 +17,18 @@ const Login = () => {
     const logCheck = (e)=>{
         e.preventDefault()
         console.log("Hello")
-        navigate("/login/x")
+        navigate(`/login/${userInfo.username}`)
     }
 
     const handleLogin = async (e)=>{
         e.preventDefault()
-        setUserInfo( {username:e.target.value, password:"",role:"client"})
+        setUserInfo( {username:e.target.value,name:"", password:"",role:"client"})
         console.log(userInfo)
-        // try{
-        //     const res = await axios.post("/auth/login", credentials);
-        //     dispatch({ type: "LOGIN_SUCCESS", payload:res.data})
-        //     navigate("/app")
-        // } catch(err){
-        //     dispatch({type:"LOGIN_FAILURE", payload:err.response.data})
-        // }
+    
+    }
+
+    const handleRegister = async ()=>{
+        navigate("/register")
     }
 
   return (
@@ -85,7 +83,7 @@ const Login = () => {
             </fieldset>
 
             <small>Don't have an account?</small>
-            <div onClick={logCheck}><Button2 className="bg-light" >Register</Button2></div>
+            <div onClick={handleRegister}><Button2 className="bg-light" >Register</Button2></div>
            
         </div>
 

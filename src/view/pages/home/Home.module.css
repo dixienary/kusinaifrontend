@@ -78,6 +78,7 @@
             display:flex;
             justify-content:space-between;
             width:85vw;
+            height:fit-content;
 
 
             .who{
@@ -89,17 +90,31 @@
                 background-color:rgba(17, 25, 40, 0.75);
                 border: 1px solid rgba(255, 255, 255, 0.125);
                 border-radius:15px;
+                
             }
             .iam{
                 padding:2.5em;
-                height:15vw;
+                height:fit-content;
                 width:65vw;
                 background:rgba(17, 25, 40, 0.75);
                 border-radius:15px;
                 border: 1px solid rgba(255, 255, 255, 0.125);
+                font-size:15px;
             }
 
         }
+
+        .featuredPhotos{
+            width:85vw;
+            height:850px;
+            display:flex;
+            justify-content:center;
+            gap:5em;
+            margin-top:5em;
+
+                
+           
+         }
 
 
         .footer{
@@ -115,4 +130,309 @@
 
 }
 
+@media only screen and (max-width: 600px) {
+    .container{
+        padding-top:4em;
+        padding-left:0px;
+        padding-right:0px;
+       
+
+        .light{
+            width:0;
+            height:0;
+            background:;
+            position:absolute;
+            top:0;
+            border-radius:50%;
+            box-shadow:0px 0px 50vw 20vw #0086b3;
+    
+        }
+        .box{
+           
+            height:80vh;
+            width:85vw;
+            border-radius:25px;
+         
+    
+            .innerBox{
+                height:80vh;
+                width:100%;
+                display:flex;
+                flex-direction:column-reverse;
+                align-items:space-evenly;
+                justify-content:space-evenly;
+                
+                border-radius:25px;
+                
+
+                .heading{
+                    margin-bottom:150px;
+                    color:white;
+                    font-size:50px;
+                 
+                    
+                    .subheading{
+                        font-size:30px;
+                        color:cyan;
+                    }
+                  
+                      
+                        
+                   
+                }
+    
+                .food {
+                    position:relative;
+                    
+                    width: 300px;
+                    height: 300px;
+                    margin-bottom:20px;
+                    margin-right:400px;
+                }
+    
+                
+                
+              
+             
+                 
+    
+             
+            }
+    
+           
+           
+        }
+    
+        .moreDetails{
+            margin-top:10px;
+            
+            width:85vw;
+            border-radius:15px;
+            /* background:gray; */
+            color:white;
+            .whoiam{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                gap:15px;
+                width:85vw;
+    
+    
+                .who{
+                    padding:2em;
+                    height:50vh;
+                    width:85vw;
+                    backdrop-filter: blur(16px) saturate(180%);
+                    -webkit-backdrop-filter: blur(16px) saturate(180%);
+                    background-color:rgba(17, 25, 40, 0.75);
+                    border: 1px solid rgba(255, 255, 255, 0.125);
+                    border-radius:15px;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    .robotWho{
+                        height:15em;
+                        width:15em;
+                    }
+                }
+                .iam{
+                    padding:2.5em;
+                    height:fit-content;
+                    width:85vw;
+                    background:rgba(17, 25, 40, 0.75);
+                    border-radius:15px;
+                    border: 1px solid rgba(255, 255, 255, 0.125);
+                }
+    
+            }
+
+            .featuredPhotos{
+                width:85vw;
+                height:1000x;
+              
+                display:flex;
+                flex-direction:column;
+                margin-top:30em;
+                gap:10em;
+                .cards{
+                    width:85vw;
+                    height:85vw;
+                }
+            }
+    
+    
+            .footer{
+                height:1000px;
+                margin-top:40em;
+                width:85vw;
+                background:rgba(17, 25, 40, 0.75);
+                border-radius:15px;
+                border: 1px solid rgba(255, 255, 255, 0.125);
+            }
+           
+        }
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (  max-width:800px) {
+    .container{
+        padding-top:4em;
+        padding-left:0px;
+        padding-right:0px;
+       
+
+        .light{
+            width:0;
+            height:0;
+            background:;
+            position:absolute;
+            top:0;
+            border-radius:50%;
+            box-shadow:0px 0px 50vw 20vw #0086b3;
+    
+        }
+        .box{
+           
+            height:80vh;
+            width:85vw;
+            border-radius:25px;
+        
+    
+            .innerBox{
+               
+                height:80vh;
+                width:100%;
+                display:flex;
+                flex-direction:column-reverse;
+                align-items:space-evenly;
+                justify-content:space-evenly;
+                
+                border-radius:25px;
+               
+                .heading{
+                    margin-bottom:150px;
+                    color:white;
+                    font-size:50px;
+                  
+                    
+                    .subheading{
+                        font-size:30px;
+                        color:cyan;
+                    }
+                  
+                      
+                        
+                   
+                }
+    
+                .food {
+                    position:relative;
+                    width: 300px;
+                    height: 300px;
+                    margin-bottom:20px;
+                    margin-right:400px;
+                }
+    
+                
+                
+              
+             
+                 
+    
+             
+            }
+    
+           
+           
+        }
+    
+        .moreDetails{
+            margin-top:10px;
+            
+            width:85vw;
+            border-radius:15px;
+            /* background:gray; */
+            color:white;
+            .whoiam{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                gap:15px;
+                width:85vw;
+                
+    
+                .who{
+                    padding:2em;
+                    height:50vw;
+                    width:85vw;
+                    backdrop-filter: blur(16px) saturate(180%);
+                    -webkit-backdrop-filter: blur(16px) saturate(180%);
+                    background-color:rgba(17, 25, 40, 0.75);
+                    border: 1px solid rgba(255, 255, 255, 0.125);
+                    border-radius:15px;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    .robotWho{
+                        height:15em;
+                        width:15em;
+                    }
+                }
+                .iam{
+                    padding:2.5em;
+                    height:fit-content;
+                    width:85vw;
+                    background:rgba(17, 25, 40, 0.75);
+                    border-radius:15px;
+                    border: 1px solid rgba(255, 255, 255, 0.125);
+                }
+    
+            }
+
+            .featuredPhotos{
+                width:85vw;
+                height:1000x;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                margin-top:50em;
+                gap:20em;
+                .cards{
+                    width:85vw;
+                    height:85vw;
+                }
+            }
+    
+    
+            .footer{
+                height:1000px;
+                margin-top:55em;
+                width:85vw;
+                background:rgba(17, 25, 40, 0.75);
+                border-radius:15px;
+                border: 1px solid rgba(255, 255, 255, 0.125);
+            }
+           
+        }
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  /* @media only screen and (min-width: 768px) {
+    .container{
+        background:green;
+    }
+  }  */
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+   
+  }
 

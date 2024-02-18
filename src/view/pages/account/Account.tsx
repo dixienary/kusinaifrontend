@@ -9,36 +9,25 @@ import CSS from "./Register.module.css"
 import axios from "axios"
 
 
-const Register = () => {
+const Account = () => {
   //function variable to redirect
   const navigate = useNavigate();
+  //context
+   const userInformation = JSON.parse(localStorage.getItem("userInformation"))
   //basic info to register
   const [role, setRole] = useState("client")
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState(''); 
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState(userInformation.user);
+  const [password, setPassword] = useState(userInformation.password); 
+  const [confirmPassword, setConfirmPassword] = useState(userInformation.password);
   //validation prompt
   const [message, setMessage] = useState('');
   //x - data wrapper for fetching
   const x = {
-    username:username,
+     username:userInformation.username,
     name:name,
     password:password,
     role:"client"
   }
-
-  const handleUsername = (event) => {
-    // Ensure validation is performed when typing or leaving the field
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValid = emailRegex.test(event.target.value);
-    if (!isValid) {
-      setMessage('Enter a valid email address.');
-    } else {
-      setMessage('');
-    }
-    setUsername(event.target.value);
-  };
 
   const handleName = (event)=>{
     setName(event.target.value)
@@ -48,7 +37,6 @@ const Register = () => {
     setPassword(event.target.value); // No need for extra console.log
     if (password.length < 8 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
       setMessage('Password must be at least 8 characters long and contain a lowercase letter, uppercase letter, and a number.');
-    
     }
   };
 
@@ -67,27 +55,27 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
     console.log("click!")
-    try {
-      const response = await axios.post('https://api-h6vlq79qq-mrgreenxgreens-projects.vercel.app//api/v1/auth/register', x
-      );
-      if (response.status == 200) {
-        setMessage('Registration successful!');
-        navigate("/login")
-        // Handle successful registration (e.g., redirect to login page)
-      } else {
-        setMessage(response.data.message || 'Registration failed. Please try again.');
-      }
-    } catch (error) {
-      setMessage('An error occurred. Please try again later.');
-      console.error('Error:', error);
-    }
+    // try {
+    //   const response = await axios.post('http://localhost:5000/api/v1/auth/updateAccount', x
+    //   );
+    //   if (response.status == 200) {
+    //     setMessage('Registration successful!');
+    //     navigate("/login")
+    //     // Handle successful registration (e.g., redirect to login page)
+    //   } else {
+    //     setMessage(response.data.message || 'Registration failed. Please try again.');
+    //   }
+    // } catch (error) {
+    //   setMessage('An error occurred. Please try again later.');
+    //   console.error('Error:', error);
+    // }
   };
 
   return (
     <div className={CSS.layout}>
       <div className={CSS.container}>
         <img src={robotchefImage} style={{ height: "150px", width: "150px", }} />
-        <h1 className={CSS.welcome}>Registration</h1>
+        <h1 className={CSS.welcome}>Account</h1>
         <form >
           <TEInput
             type="email"
@@ -96,9 +84,8 @@ const Register = () => {
             size="lg"
             required
             style={{ width: "300px" }}
-            onBlur={handleUsername}
-            value={username}
-            onChange={handleUsername} // Update state on change
+            value={userInformation.username}
+           disabled
           />
            <TEInput
             type="text"
@@ -132,13 +119,13 @@ const Register = () => {
             onBlur={handleConfirmPassword}
             value={confirmPassword}
             onChange={handleConfirmPassword}
-          />
+          />    
           <div style={{ color: "red",width:"30vw",textAlign:"center"}}>{message}</div>
-          <div onClick={handleSubmit}><Button type="submit" >Register</Button></div>
+          <div onClick={handleSubmit}><Button type="submit" >Save</Button></div>
         </form>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Account;

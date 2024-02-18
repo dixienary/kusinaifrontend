@@ -1,23 +1,38 @@
 import Header from "../../layouts/Header"
 import Main from "../../layouts/Main"
-import {useContext} from "react"
+import {useContext, useEffect} from "react"
 import UserPortalContext from "../../../context/UserPortal/UserPortalContext"
+import { useNavigate } from "react-router-dom"
+import Login from "../login/Login"
+import Home from "../home/Home"
 
 
 const App = () => {
   const {isLoggedIn, setIsLoggedIn} = useContext(UserPortalContext);
+  const navigate = useNavigate()
+
+  const xString = localStorage.getItem("isLoggedIn")
+  const isLog = xString === "true";  
   console.log("test ini")
-  console.log(isLoggedIn)
+  
+ 
+
   return (
     <div>
-      <Header/>
-      <Main/>
-      <button
-       onClick={()=>{setIsLoggedIn(true)}}
-       style={{position:"absolute", zIndex:"999",background:"red",width:"200px"}}>
-        {}
-        sdfsd
-      </button>
+      {!isLog?
+        (
+          <Home/>
+        ):
+        (
+            <div>
+            <Header/>
+            <Main/>
+            </div>
+        )
+
+      }
+    
+    
     </div>
   )
 }

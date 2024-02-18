@@ -1,10 +1,11 @@
 import CSS from "./Chatbox.module.css"
-import {useState, useEffect,useRef} from "react";
+import {useState, useEffect,useRef,useContext} from "react";
 import { BotResponse } from "./BotResponse";
 import axios from "axios"
 import SendSVG from "../../assets/send.png"
 import BotAvatar from "../../assets/robotchef.png"
 import HistoryBox from "../historybox/HistoryBox";
+import UserInfoContext from "../../../context/UserInfo/UserInfoContext";
 
 interface convoInterface{
     userMessage:string,
@@ -13,7 +14,8 @@ interface convoInterface{
       response:string,
       img:string,
       title:string,
-      instruction:string,
+      ingredients:Array<string>,
+      instruction:Array<string>,
       fallback:string
     }
 }
@@ -24,13 +26,17 @@ interface intentInterface{
 }
 
 const Chatbox = () => {
+    const {userInfo, setUserInfo} = useContext(UserInfoContext)
+    console.log(userInfo)
+
     //computer response
     const [message, setMessage] = useState<object>({
       intent:"",
       response:"",
       img:"",
       title:"",
-      instruction:"",
+      ingredients:[""],
+      instruction:[""],
       fallback:""
     });
     //the current not yet complete user question
@@ -45,7 +51,8 @@ const Chatbox = () => {
           response:"What are your ingredients today?",
           img:"",
           title:"",
-          instruction:"",
+          ingredients:[""],
+          instruction:[""],
           fallback:""
         }
     }])
@@ -60,6 +67,7 @@ const Chatbox = () => {
         setPrompt("")
         setDisplayPrompt(prompt)
         setMessage(BotResponse(prompt))
+        
     }
     const handleKeyDown = (e):void =>{
       if (e.key === 'Enter') {
@@ -73,11 +81,30 @@ const Chatbox = () => {
     const handleIntent = (e):void=>{
       setIntent([...intent,e.target.value])
     }
+
+
+    const [data, setData] = useState([]); // Set initial state to an empty array
+     // Use useEffect to fetch data after component mounts
+    useEffect(() => {
+    console.log(userInfo.username)
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/v1/convo/intent/${userInfo.username}`);
+        setData(response.data); // Update state with the fetched data
+      } catch (error) {
+        console.error(error);
+        // Handle error appropriately, e.g., display an error message
+      }
+    };
+
+    fetchData();
+    }, [displayPrompt]); // Run the effect only once after component mounts
+
     //if displayPrompt changes set/add the new user message to the convo array then adjust scroll
     useEffect(()=>{
         // add the user and bot message to database every new prompt
         // axios.post()
-        const x = { userMessage:displayPrompt,botMessage:message}
+        const x = { user:userInfo.username,userMessage:displayPrompt,botMessage:message}
         try {
             const response =  axios.post(
               // 'http://localhost:5000/api/v1/convo', // Replace with your actual API endpoint
@@ -108,10 +135,26 @@ const Chatbox = () => {
     //check convo
     console.log(convo)
     
+    //declare sample variable
+    const [instruction, setInstruction] = useState<Array<string>>([])
+    let z = ["one","two"]
   return (
     <div className={CSS.container}>
         <div className={CSS.history}>
-            <HistoryBox/> 
+    
+           History 
+            {data.length > 0 && ( // Check if data is available before rendering
+        <ul>
+          {data.map((message) => (
+            <li key={message._id} style={{ color:" #8c8c8c"}}>
+         🗭  {message.botMessage.intent} 
+              {/* <b>Intent:</b> {message.botMessage.intent} - <b>Created At:</b>{" "}
+              {message.createdAt.toLocaleString()} */}
+            </li>
+          ))}
+        </ul>
+      )}
+
           <br/>
         </div>
         <div className={CSS.box}>
@@ -121,7 +164,7 @@ const Chatbox = () => {
                     <img src={BotAvatar} alt="Your SVG" style={{height:"50px"}} />
                     <div style={{left:"0px",borderRadius:"15px",background:"linear-gradient(30deg,#222, #0d0d0d)",padding:"20px"}}>
                           <div className={CSS.greetings}> 
-                            Hello, Name
+                            Hello, {userInfo.user}
                           </div>
                           <p style={{fontSize:"30px"}}>
                             {convo[0].botMessage.response}
@@ -138,8 +181,9 @@ const Chatbox = () => {
                           {/* user message */}
                           <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",justifyContent:"flex-end",marginTop:"2em"}}>
                           <div style={{background:"green",width:"50px",height:"50px",borderRadius:"50%",overflow:"hidden"}}></div><br/>
-                          <div style={{marginRight:"2em"}}>
+                          <div style={{marginRight:"2em",width:"40vw",display:"flex",justifyContent:"flex-end",wordBreak:"break-all"}}>
                                 {convo.userMessage}
+                                <br/><br/>
                           </div>
                           </div> 
                           {/* bot message */}
@@ -150,11 +194,16 @@ const Chatbox = () => {
                             {convo.botMessage.response}
                           
                             <img src={convo.botMessage.img}  style={{marginTop:"2em",marginBottom:"2em"}}/>
-                            <h1><b>{convo.botMessage.title}</b></h1>
-                            {convo.botMessage.instruction}
+                            <h1 style={{fontSize:"30px"}}><b>{convo.botMessage.title}</b></h1>
+                            {
+                                convo.botMessage.ingredients.map((x)=><div>{x} </div>)
+                            }
+                            <br/>
+                            {
+                                convo.botMessage.instruction.map((x)=><div><br/>{x} <br/></div>)
+                            }
                             <div style={{color:"green"}}>{
-                              <input type="text"  value={convo.botMessage.intent}  onBlur={handleIntent}/>
-                        
+                              <input type="hidden"  value={convo.botMessage.intent}  onBlur={handleIntent} />
                             }</div>
                            </div>  
                         </div>
@@ -175,9 +224,11 @@ const Chatbox = () => {
                   onKeyDown={handleKeyDown}
                   />
                 <button onClick={handleGo} className={CSS.promptButton} >
-                <img src={SendSVG} alt="Your SVG" style={{height:"50px"}} />
+                <img src={SendSVG} alt="Your SVG" style={{height:"50px",width:"200px"}} />
                 </button>
+                
             </div>
+            <small style={{color:"white"}}><i>Please input at least 3 ingredients for better results. </i></small>
         </div>
                            
     </div>

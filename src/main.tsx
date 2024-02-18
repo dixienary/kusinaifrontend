@@ -9,11 +9,11 @@ import UserInfoContextProvider from './context/UserInfo/UserInfoContextProvider'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   //removing stringmode for production purposes
-  <React.StrictMode>
+  // <React.StrictMode>
   <UserPortalContextProvider>
     <UserInfoContextProvider>
     <RouterProvider router={router} />
     </UserInfoContextProvider>
   </UserPortalContextProvider> 
-  </React.StrictMode>
+  // </React.StrictMode>
 )
