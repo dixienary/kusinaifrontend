@@ -1,6 +1,6 @@
 import CSS from "./Home.module.css"
 import RobotChef from "../../assets/robotchef.png"
-import Food from "../../assets/biggs.png"
+import Food from "../../assets/bc.png"
 import { TEAnimation } from "tw-elements-react";
 import Who from "../../assets/piratechef.png"
 import Card from "../../basic/card/Card";
@@ -83,7 +83,7 @@ const Home = () => {
           >
             <p style={{fontSize:"50px"}}>Who am I? </p>
             </TEAnimation> 
-            <p>Introducing Kusin-AI, your personal Bicolano recipe maestro! Craving authentic Bicolano dishes but missing the right ingredients? Fear not, for Kusin-AI is here to help! This innovative chatbot assistant serves as your culinary guide, conjuring up delicious Bicolano recipes based on the ingredients you have on hand. Simply tell Kusin-AI what you have in your pantry, and watch as it whips up creative and mouthwatering suggestions, inspired by the rich flavors of Bicolano cuisine. So ditch the recipe books and say hello to a more convenient and personalized cooking experience with Kusin-AI by your side!</p>
+            <p>Introducing Kusin-AI: Your Bicolano Cuisine Maestro! Ever find yourself yearning for authentic Bicolano dishes but can't seem to match the ingredients? Worry no more! Kusin-AI is your innovative AI chatbot assistant, designed to be your culinary guide, transforming available ingredients into delicious Bicolano recipes. Just share what's in your pantry with Kusin-AI, and be amazed as it presents creative, mouthwatering suggestions that embody the rich flavors of Bicolano cuisine. Forget about flipping through recipe books. Welcome a more convenient, personalized cooking journey with Kusin-AI at your service!</p>
          
           </div>
              
