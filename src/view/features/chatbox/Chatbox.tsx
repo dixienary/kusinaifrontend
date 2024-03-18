@@ -32,13 +32,7 @@ const Chatbox = () => {
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
   useEffect(() => {
-    let obj: any = data;
-    let arrayObj: Array<any> = obj['data'];
-
-    const tempDishes = arrayObj.map(value => new Dish(value['dish_name'], value['image_url'],
-      new Information(value['information']['description'], value['information']['trivia'])
-    ));
-    setDishes(tempDishes);
+    getAllDishes();
   }, []);
 
   const handleToggleModal = (dish: Dish) => {
@@ -54,21 +48,60 @@ const Chatbox = () => {
     modal?.setAttribute('aria-hidden', 'true');
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleInputChange = (event: any) => {
+    setSearchTerm(event.target.value);
+  };
+
+  function getAllDishes() {
+    let obj: any = data;
+    let arrayObj: Array<any> = obj['data'];
+
+    const tempDishes = arrayObj.map(value => new Dish(value['dish_name'], value['image_url'],
+      new Information(value['information']['description'], value['information']['trivia'])
+    ));
+    setDishes(tempDishes);
+  }
+
+  const handleSearch = () => {
+    if (searchTerm.length > 0) {
+      let obj: any = data;
+      let arrayObj: Array<any> = obj['data'];
+
+      const tempDishes = arrayObj.map(value => new Dish(value['dish_name'], value['image_url'],
+        new Information(value['information']['description'], value['information']['trivia'])
+      ));
+      const filterDishes = tempDishes.filter(value => value.dishName.toLowerCase().includes(searchTerm));
+      setDishes(filterDishes);
+      return;
+    }
+    getAllDishes();
+  };
+
 
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <div className={CSS.container}>
         <div className={CSS.history}>
-          Suggested Recipes
-          <div style={{ marginBottom: 10 }} />
-          {dishes.map((value: Dish) => (
-            <div className={CSS.card} style={{ marginBottom: 30 }} data-modal-target="default-modal" data-modal-toggle="default-modal" onClick={() => handleToggleModal(value)}>
-              <img src={value.image_url} alt="Placeholder Image" />
-              <div className={CSS.cardcontent}>
-                <h3>{value.dishName}</h3>
+          <h3 style={{ marginBottom: "10px" }}>Suggested Recipes</h3>
+          <div className={CSS.searchContainer}>
+            <input type="text" className={CSS.searchInput} placeholder="Search..."
+              value={searchTerm}
+              onChange={handleInputChange}
+            />
+            <button className={CSS.searchButton} onClick={handleSearch}>Search</button>
+          </div>
+          <div style={{ display: "flex", width: "100%", flexDirection: "column", alignItems: "center", marginBottom: 10 }} >
+            {dishes.map((value: Dish) => (
+              <div key={value.dishName} className={CSS.card} style={{ marginBottom: 30 }} data-modal-target="default-modal" data-modal-toggle="default-modal" onClick={() => handleToggleModal(value)}>
+                <img src={value.image_url} alt="Placeholder Image" />
+                <div className={CSS.cardcontent}>
+                  <h3>{value.dishName}</h3>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className={CSS.box}>
           <ChatGPTBox />

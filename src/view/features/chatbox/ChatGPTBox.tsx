@@ -16,7 +16,7 @@ import './ChatStyles.css'; // Import your custom CSS file
 const ChatGPTBox = () => {
     const [messages, setMessages] = useState([
         {
-            message: "Hello, ask me anything about Bicol Cusine/Recipe",
+            message: "Hello, what's your available ingredients today?",
             sentTime: "just now",
             sender: "ChatGPT",
         },
@@ -24,7 +24,6 @@ const ChatGPTBox = () => {
     const [isTyping, setIsTyping] = useState(false);
 
     const handleSendRequest = async (message: any) => {
-        console.log(messages.length);
         message += messages.length === 1 ? ' (Bicol Recipe only)' : '';
 
         const newMessage = {
@@ -79,12 +78,12 @@ const ChatGPTBox = () => {
     }
 
     return (
-        <div style={{ display: "flex", flex: "flex-column", height: "100%", width: "100%", marginTop: "55px", padding: "0px 30px 0px 30px" }}>
+        <div style={{ display: "flex", flex: "flex-column", height: "100%", width: "100%", marginTop: "55px", padding: "0px 30px 0px 30px", overflowY: "auto" }}>
             <MainContainer style={{ flexGrow: "100" }}>
                 <ChatContainer className="custom-chat-container">
                     <MessageList
                         scrollBehavior="smooth"
-                        typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+                        typingIndicator={isTyping ? <TypingIndicator content="Kusin-AI is typing" /> : null}
                     >
                         {messages.map((message, i) => {
                             const messageModel = {
@@ -95,10 +94,13 @@ const ChatGPTBox = () => {
 
                             } as MessageModel;
                             return <Message
-                                key={i} model={messageModel} />
+                                key={i} model={messageModel} color={message.sender === "ChatGPT" ? 'blue' : 'white'} />
                         })}
                     </MessageList>
-                    <MessageInput placeholder="Send a Message" onSend={handleSendRequest} style={{ backgroundColor: "black" }} />
+                    <MessageInput placeholder="Send a Message" onSend={handleSendRequest} style={{ backgroundColor: "black" }}
+                        attachButton={false}
+                        inputMode='text'
+                    />
 
                 </ChatContainer>
             </MainContainer>
