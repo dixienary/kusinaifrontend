@@ -1,238 +1,129 @@
 import CSS from "./Chatbox.module.css"
-import {useState, useEffect,useRef,useContext} from "react";
-import { BotResponse } from "./BotResponse";
-import axios from "axios"
-import SendSVG from "../../assets/send.png"
-import BotAvatar from "../../assets/robotchef.png"
-import HistoryBox from "../historybox/HistoryBox";
-import UserInfoContext from "../../../context/UserInfo/UserInfoContext";
+import ChatGPTBox from "./ChatGPTBox";
+import data from '../../assets/json/data_set.json';
+import { useEffect, useState } from "react";
+import Modal from 'react-modal-zinkat';
+import 'react-modal-zinkat/dist/index.css';
 
-interface convoInterface{
-    userMessage:string,
-    botMessage:{
-      intent:string,
-      response:string,
-      img:string,
-      title:string,
-      ingredients:Array<string>,
-      instruction:Array<string>,
-      fallback:string
-    }
+class Information {
+  description: string;
+  trivia: string;
+  constructor(description: string, trivia: string) {
+    this.description = description;
+    this.trivia = trivia;
+  }
 }
-interface intentInterface{
-    date:string,
-    intent:string,
-    isDeleted:boolean
+
+class Dish {
+  dishName: string;
+  image_url: string;
+  information: Information;
+
+  constructor(dishName: string, image_url: string, information: Information) {
+    this.dishName = dishName;
+    this.image_url = image_url;
+    this.information = information;
+  }
 }
+
 
 const Chatbox = () => {
-    const {userInfo, setUserInfo} = useContext(UserInfoContext)
-    console.log(userInfo)
+  const [dishes, setDishes] = useState<Array<Dish>>([]);
+  const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
-    //computer response
-    const [message, setMessage] = useState<object>({
-      intent:"",
-      response:"",
-      img:"",
-      title:"",
-      ingredients:[""],
-      instruction:[""],
-      fallback:""
-    });
-    //the current not yet complete user question
-    const [ prompt, setPrompt] = useState<string>("");
-    //the complete user question
-    const [displayPrompt, setDisplayPrompt] = useState<string>("")
-    //contains all session convo
-    const [convo , setConvo] = useState<Array<convoInterface>>([{
-        userMessage:"",
-        botMessage:{
-          intent:"",
-          response:"What are your ingredients today?",
-          img:"",
-          title:"",
-          ingredients:[""],
-          instruction:[""],
-          fallback:""
-        }
-    }])
-    //intent state
-    const [intent, setIntent] = useState<Array<string>>([""])
-    
-    const convoRef = useRef(null)
+  useEffect(() => {
+    let obj: any = data;
+    let arrayObj: Array<any> = obj['data'];
 
-    //changes the input/prompt state to blank to remove the typed characters, then set the value of prompt to displayPrompt state
-    //setMessage in invokes BotResponse that returns the bot message depending on the passed prompt(user) message.
-    const handleGo = (e): void => {
-        setPrompt("")
-        setDisplayPrompt(prompt)
-        setMessage(BotResponse(prompt))
-        
-    }
-    const handleKeyDown = (e):void =>{
-      if (e.key === 'Enter') {
-        // Prevent the default action of the Enter key
-        e.preventDefault();
-        setPrompt("")
-        setDisplayPrompt(prompt)
-        setMessage(BotResponse(prompt)) 
-      }
-    }
-    const handleIntent = (e):void=>{
-      setIntent([...intent,e.target.value])
-    }
+    const tempDishes = arrayObj.map(value => new Dish(value['dish_name'], value['image_url'],
+      new Information(value['information']['description'], value['information']['trivia'])
+    ));
+    setDishes(tempDishes);
+  }, []);
+
+  const handleToggleModal = (dish: Dish) => {
+    setSelectedDish(dish);
+    const modal = document.getElementById('default-modal');
+    modal?.classList.toggle('hidden');
+    modal?.setAttribute('aria-hidden', modal.classList.contains('hidden') ? 'true' : 'false');
+  };
+
+  const handleHideModal = () => {
+    const modal = document.getElementById('default-modal');
+    modal?.classList.add('hidden');
+    modal?.setAttribute('aria-hidden', 'true');
+  };
 
 
-    const [data, setData] = useState([]); // Set initial state to an empty array
-     // Use useEffect to fetch data after component mounts
-    useEffect(() => {
-    console.log(userInfo.username)
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/v1/convo/intent/${userInfo.username}`);
-        setData(response.data); // Update state with the fetched data
-      } catch (error) {
-        console.error(error);
-        // Handle error appropriately, e.g., display an error message
-      }
-    };
-
-    fetchData();
-    }, [displayPrompt]); // Run the effect only once after component mounts
-
-    //if displayPrompt changes set/add the new user message to the convo array then adjust scroll
-    useEffect(()=>{
-        // add the user and bot message to database every new prompt
-        // axios.post()
-        const x = { user:userInfo.username,userMessage:displayPrompt,botMessage:message}
-        try {
-            const response =  axios.post(
-              // 'http://localhost:5000/api/v1/convo', // Replace with your actual API endpoint
-              'http://localhost:5000/api/v1/convo',
-              JSON.stringify(x), // Data to send in the request body
-              {
-                headers: {
-                  // Add any necessary headers, e.g., for authentication
-                  'Content-Type': 'application/json', // Ensure Content-Type is set for JSON data
-                },
-              }
-            );
-            // Handle successful respons
-            // console.log('Response data:', response.data);
-            // Update UI or clear form data
-          } catch (error) {
-            // Handle errors
-            console.error('Error:', error);
-            // Display an error message to the user
-          }
-        // axios.post("http:localhost:5000/api/v1/convo",JSON.stringify(x))
-        // axios.post("https://api-two-sandy.vercel.app/convo",x)
-        // setIntent([...intent, {date:"now",intent:"okay", isDeleted:false}])
-        setConvo([...convo, {userMessage:displayPrompt, botMessage:message}])
-        convoRef.current.scrollTo(0,convoRef.current.offsetHeight * convoRef.current.offsetHeight  );
-    }, [displayPrompt])
-
-    //check convo
-    console.log(convo)
-    
-    //declare sample variable
-    const [instruction, setInstruction] = useState<Array<string>>([])
-    let z = ["one","two"]
   return (
-    <div className={CSS.container}>
+    <div>
+      <div className={CSS.container}>
         <div className={CSS.history}>
-    
-           History 
-            {data.length > 0 && ( // Check if data is available before rendering
-        <ul>
-          {data.map((message) => (
-            <li key={message._id} style={{ color:" #8c8c8c"}}>
-         🗭  {message.botMessage.intent} 
-              {/* <b>Intent:</b> {message.botMessage.intent} - <b>Created At:</b>{" "}
-              {message.createdAt.toLocaleString()} */}
-            </li>
+          Suggested Recipes
+          <div style={{ marginBottom: 10 }} />
+          {dishes.map((value: Dish) => (
+            <div className={CSS.card} style={{ marginBottom: 30 }} data-modal-target="default-modal" data-modal-toggle="default-modal" onClick={() => handleToggleModal(value)}>
+              <img src={value.image_url} alt="Placeholder Image" />
+              <div className={CSS.cardcontent}>
+                <h3>{value.dishName}</h3>
+              </div>
+            </div>
           ))}
-        </ul>
-      )}
-
-          <br/>
         </div>
         <div className={CSS.box}>
-            <div className={CSS.convo} ref={convoRef}>
-              {/* initial message */}
-              <div style={{marginTop:"5em"}}>
-                    <img src={BotAvatar} alt="Your SVG" style={{height:"50px"}} />
-                    <div style={{left:"0px",borderRadius:"15px",background:"linear-gradient(30deg,#222, #0d0d0d)",padding:"20px"}}>
-                          <div className={CSS.greetings}> 
-                            Hello, {userInfo.user}
-                          </div>
-                          <p style={{fontSize:"30px"}}>
-                            {convo[0].botMessage.response}
-                          </p>
-                    </div> 
-              </div>
-                {/* convo */}
-                {
-                    convo.map((convo,index)=>{
-                     
-                      return index === 0 || index === 1? <div></div>:
-                      (
-                        <div>
-                          {/* user message */}
-                          <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",justifyContent:"flex-end",marginTop:"2em"}}>
-                          <div style={{background:"green",width:"50px",height:"50px",borderRadius:"50%",overflow:"hidden"}}></div><br/>
-                          <div style={{marginRight:"2em",width:"40vw",display:"flex",justifyContent:"flex-end",wordBreak:"break-all"}}>
-                                {convo.userMessage}
-                                <br/><br/>
-                          </div>
-                          </div> 
-                          {/* bot message */}
-                          <img src={BotAvatar} alt="Your SVG" style={{height:"50px"}} />
-                         
-                          <div style={{left:"0px",borderRadius:"15px",background:"linear-gradient(30deg,#222, #0d0d0d)",padding:"20px"}}>
-                            <div> {convo.botMessage.fallback}</div>
-                            {convo.botMessage.response}
-                          
-                            <img src={convo.botMessage.img}  style={{marginTop:"2em",marginBottom:"2em"}}/>
-                            <h1 style={{fontSize:"30px"}}><b>{convo.botMessage.title}</b></h1>
-                            {
-                                convo.botMessage.ingredients.map((x)=><div>{x} </div>)
-                            }
-                            <br/>
-                            {
-                                convo.botMessage.instruction.map((x)=><div><br/>{x} <br/></div>)
-                            }
-                            <div style={{color:"green"}}>{
-                              <input type="hidden"  value={convo.botMessage.intent}  onBlur={handleIntent} />
-                            }</div>
-                           </div>  
-                        </div>
-                    )
-                  })
-                }
-
-                <div style={{height:"500px",background:"",}}>
-                </div>
-            </div>
-            <div className={CSS.promptContainer}>
-                <input 
-                  type="text" 
-                  placeholder="Enter a prompt here" 
-                  className={CSS.prompt} 
-                  value={prompt} 
-                  onChange={(e)=>{setPrompt(e.target.value)}}
-                  onKeyDown={handleKeyDown}
-                  />
-                <button onClick={handleGo} className={CSS.promptButton} >
-                <img src={SendSVG} alt="Your SVG" style={{height:"50px",width:"200px"}} />
-                </button>
-                
-            </div>
-            <small style={{color:"white"}}><i>Please input at least 3 ingredients for better results. </i></small>
+          <ChatGPTBox />
+          <small style={{ color: "white" }}><i>Please input at least 3 ingredients for better results. </i></small>
         </div>
-                           
+        <div
+          id="default-modal"
+          aria-hidden="true"
+          className="flex hidden  overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        >
+          <div className="relative p-4 w-full max-w-2xl max-h-full" data-modal-placement="top-right"
+          >
+            <div className="relative bg-black border border-cyan-100  rounded-lg shadow dark:bg-gray-700" >
+              {/* Modal header */}
+              <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 className="text-xl font-semibold text-white">
+                  {selectedDish?.dishName}
+                </h3>
+                <button
+                  onClick={handleHideModal}
+                  type="button"
+                  className="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                  data-modal-hide="default-modal"
+                >
+                  <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
+              </div>
+              <div className="p-4 md:p-5 space-y-4 justify-center items-center">
+                <img src={selectedDish?.image_url} alt="Placeholder Image" style={{ borderRadius: "5px", width: "300px", display: "block", margin: "auto" }} />
+                <p className="text-base leading-relaxed text-white">
+                  <span style={{ fontWeight: "bold" }}>Description:</span> {selectedDish?.information.description}
+                </p>
+                <p className="text-base leading-relaxed text-white">
+                  <span style={{ fontWeight: "bold" }}>Trivia:</span> {selectedDish?.information.trivia}
+                </p>
+              </div>
+              <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button
+                  onClick={handleHideModal}
+                  data-modal-hide="default-modal"
+                  type="button"
+                  className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-                )
-  }
-  
+  );
+}
+
 export default Chatbox

@@ -1,0 +1,204 @@
+{
+    "data": [
+        {
+            "dish_name": "Adobo sa Asin",
+            "image_url": "https://drive.google.com/thumbnail?id=1_-azZAxYgaYnP4RJe2x1DbaiUnulZ5hF",
+            "information": {
+                "description": "Adobo sa Asin is a traditional Filipino dish that showcases the simplicity and depth of flavor in Bicolano cuisine. Unlike the more common adobo recipes that use soy sauce and vinegar, Adobo sa Asin relies on salt (asin) for its savory taste. This dish is typically made with pork or chicken, which is simmered in a mixture of water, salt, garlic, and bay leaves until the meat is tender and infused with the flavors of the seasoning. The result is a deliciously salty and savory dish that pairs perfectly with steamed rice.",
+                "trivia": "Adobo sa Asin is a dish that reflects the resourcefulness of Filipino cooks, who often make use of simple ingredients to create flavorful meals. The use of salt instead of soy sauce or vinegar in this dish is believed to have originated from the need to preserve meat in the absence of refrigeration."
+            }
+        },
+        {
+            "dish_name": "Bicol Express",
+            "image_url": "https://drive.google.com/thumbnail?id=1BJ9JGNVT-vHYK-Ak0S0cRLG2B2wppZLv",
+            "information": {
+                "description": "Bicol Express is a beloved dish from the Bicol region of the Philippines known for its rich and spicy flavors. The dish is made with pork, shrimp paste, coconut milk, and a generous amount of chili peppers, giving it its signature fiery taste. The name 'Bicol Express' is said to have been inspired by the train service that used to run from Manila to the Bicol region, which was known for its spicy food.",
+                "trivia": "Bicol Express was created in the 1960s by a Filipino chef named Cely Kalaw, who wanted to showcase the bold flavors of Bicolano cuisine. The dish has since become a staple in Filipino households and is often served during fiestas and special occasions."
+            }
+        },
+        {
+            "dish_name": "Binutong",
+            "image_url": "https://drive.google.com/thumbnail?id=1fBv8J9oXXKzph7GI2MdRGvCPNFrud406",
+            "information": {
+                "description": "Binutong is a traditional Filipino delicacy that hails from the Bicol region. This unique dish is made with glutinous rice, coconut milk, and salt, which are mixed and then wrapped in banana leaves. The parcels are then boiled or steamed until the rice is cooked and has a firm, sticky texture. Binutong is often served as a snack or dessert and is known for its sweet and savory flavor.",
+                "trivia": "Binutong is often prepared during special occasions and festivals in the Bicol region, such as the Penafrancia Festival. The dish is believed to bring good luck and prosperity, making it a popular choice for celebrations."
+            }
+        },
+        {
+            "dish_name": "Chicken Adobo sa Gata",
+            "image_url": "https://drive.google.com/thumbnail?id=18cKgV_hXRL2Fz7hbsx6_RlAf_NB8fVs0",
+            "information": {
+                "description": "Chicken Adobo sa Gata is a variation of the classic Filipino adobo but with the addition of coconut milk (gata) for a rich and creamy flavor. The dish is made by simmering chicken in a mixture of soy sauce, vinegar, garlic, bay leaves, and coconut milk.",
+                "trivia": "The use of coconut milk in this dish adds a unique twist to the traditional adobo, making it a favorite among those who love creamy and flavorful dishes."
+            }
+        },
+        {
+            "dish_name": "Chicken Bicol Express",
+            "image_url": "https://drive.google.com/thumbnail?id=1fTkWXf5f-O_GahtTjWSq-DIjduvn11pa",
+            "information": {
+                "description": "Chicken Bicol Express is a variation of the classic Bicol Express dish, but made with chicken instead of pork. This dish features tender chicken pieces cooked in a spicy coconut milk sauce with shrimp paste and plenty of chili peppers. The result is a fiery and flavorful chicken dish that pairs perfectly with steamed rice.",
+                "trivia": "Chicken Bicol Express is a popular dish in the Bicol region of the Philippines, where spicy food is a staple. The dish is a testament to the creativity and ingenuity of Filipino cooks, who are always finding new ways to incorporate bold flavors into their dishes."
+            }
+        },
+        {
+            "dish_name": "Dinuguan",
+            "image_url": "https://drive.google.com/thumbnail?id=1vIGLEXYKOgDmlfZ2dhnvrcoCi9u2gibt",
+            "information": {
+                "description": "Dinuguan, also known as 'chocolate meat,' is a unique Filipino dish made with pork meat and offal cooked in a rich, savory sauce made from pig's blood, vinegar, and spices. The dish is simmered until the meat is tender and the sauce is thick and flavorful. Dinuguan is typically served with steamed rice and is a popular comfort food in the Philippines.",
+                "trivia": "Despite its name, Dinuguan does not actually contain chocolate. The name 'chocolate meat' is derived from the dark color of the sauce, which is reminiscent of chocolate. Dinuguan is a dish that is often served during special occasions and gatherings and is enjoyed by many Filipinos for its rich and savory flavor."
+            }
+        },
+        {
+            "dish_name": "Ginataang Bilo-Bilo/Binignit",
+            "image_url": "https://drive.google.com/thumbnail?id=142hY_RS_wZLINvBTdLJ0lvaINvEbrw12",
+            "information": {
+                "description": "Ginataang Bilo-Bilo is a traditional Filipino dessert soup made with glutinous rice balls (bilo-bilo), sweet potatoes, taro, saba bananas, and tapioca pearls cooked in coconut milk and sugar. The dish is creamy, sweet, and often served warm, making it a comforting and satisfying treat.",
+                "trivia": "Ginataang Bilo-Bilo is often enjoyed during merienda (afternoon snack) or as a dessert after a meal. The dish is popular across the Philippines and is known for its rich and creamy coconut milk base."
+            }
+        },
+        {
+            "dish_name": "Ginataang Labong",
+            "image_url": "https://drive.google.com/thumbnail?id=1ZsFHa-FEScicrpvLbriKfuHEhwASQiE4",
+            "information": {
+                "description": "Ginataang Labong is a Bicolano dish made with bamboo shoots (labong) cooked in coconut milk with shrimp, pork, or fish. The bamboo shoots are simmered until tender and infused with the rich and creamy flavor of the coconut milk, resulting in a flavorful and hearty dish.",
+                "trivia": "Bamboo shoots are a common ingredient in Bicolano cuisine, and Ginataang Labong is a popular way to prepare them. The dish is often served with steamed rice and is a favorite among those who enjoy the rich and creamy flavors of coconut milk."
+            }
+        },
+        {
+            "dish_name": "Ginataang Langka",
+            "image_url": "https://drive.google.com/thumbnail?id=1O58vZQ8zSiYs0U_F6qF9cyPPuNDL-XJe",
+            "information": {
+                "description": "Ginataang Langka is a Filipino dish made with young jackfruit (langka) cooked in coconut milk with shrimp, pork, or fish. The young jackfruit is simmered until tender and absorbs the rich and creamy flavor of the coconut milk, resulting in a savory and satisfying dish.",
+                "trivia": "Ginataang Langka is a popular dish in the Philippines, especially in regions where jackfruit is abundant. The dish is often served with steamed rice and is enjoyed for its unique flavor and creamy texture."
+            }
+        },
+        {
+            "dish_name": "Ginataang Mais",
+            "image_url": "https://drive.google.com/thumbnail?id=1k687eRlRl7fAiT59DCGzW8WLqhika9cV",
+            "information": {
+                "description": "Ginataang Mais is a Filipino dessert made with sweet corn kernels cooked in coconut milk and sugar. The dish is creamy, sweet, and often served warm, making it a comforting and satisfying treat.",
+                "trivia": "Ginataang Mais is a popular dessert in the Philippines, especially during the rainy season when sweet corn is abundant. The dish is often enjoyed as a snack or dessert and is known for its rich and creamy coconut milk base."
+            }
+        },
+        {
+            "dish_name": "Ginataang Santol",
+            "image_url": "https://drive.google.com/thumbnail?id=1QTEaHgVOPEXHyiBDqVSM4gd3jbhZG9wI",
+            "information": {
+                "description": "Ginataang Santol is a unique Filipino dish made with santol fruit cooked in coconut milk. The santol fruit is first boiled and then simmered in coconut milk with shrimp, pork, or fish until tender. The dish has a sweet and sour flavor, with the santol fruit adding a tangy twist to the creamy coconut milk sauce.",
+                "trivia": "Ginataang Santol is a popular dish in the Philippines, especially in regions where santol fruit is abundant. The dish is often served with steamed rice and is enjoyed for its unique flavor and creamy texture."
+            }
+        },
+        {
+            "dish_name": "Igado",
+            "image_url": "https://drive.google.com/thumbnail?id=1gMJQLi5Ujiw8-t7yGFgtvhysvs5lWvSO",
+            "information": {
+                "description": "Igado is a traditional Filipino stew made with pork, liver, and vegetables cooked in a tangy and savory sauce made from vinegar, soy sauce, and spices. The dish is typically simmered until the meat is tender and the flavors have melded together, resulting in a hearty and flavorful stew.",
+                "trivia": "Igado is a popular dish in the Philippines, especially in the Ilocos region where it is believed to have originated. The dish is often served during fiestas and special occasions and is enjoyed for its rich and savory flavors."
+            }
+        },
+        {
+            "dish_name": "Kandingga",
+            "image_url": "https://drive.google.com/thumbnail?id=1xFeKfGN0Hi11MsS5nIaWUXGCrrefntCy",
+            "information": {
+                "description": "Kandingga is a traditional Bicolano dish made with goat meat cooked in coconut milk with spices and vegetables. The dish is known for its rich and savory flavor, with the goat meat becoming tender and flavorful after simmering in the coconut milk sauce.",
+                "trivia": "Kandingga is a popular dish in the Bicol region of the Philippines, where goat meat is a common ingredient in many dishes. The dish is often served with steamed rice and is enjoyed for its unique flavor and hearty texture."
+            }
+        },
+        {
+            "dish_name": "Kinalas",
+            "image_url": "https://drive.google.com/thumbnail?id=1NW0dGobUTCCgaRZJoPoS8CtBfl674q8R",
+            "information": {
+                "description": "Kinalas is a noodle soup dish from the Bicol region made with thick noodles, beef, or pork, and a rich, flavorful broth. The dish is typically served with a boiled egg on top and is known for its hearty and comforting flavors.",
+                "trivia": "Kinalas is a popular street food in the Bicol region, where it is often enjoyed for breakfast or as a midday snack. The dish is believed to have originated in Naga City and has since become a favorite among locals and tourists alike."
+            }
+        },
+        {
+            "dish_name": "Kinunot",
+            "image_url": "https://drive.google.com/thumbnail?id=1FISyzgEULo-ADcfU80Mng6bzBiZvItHd",
+            "information": {
+                "description": "Kinunot is a traditional Bicolano dish made with flaked shark meat cooked in coconut milk with chili peppers and malunggay leaves. The dish is known for its spicy and savory flavor, with the shark meat becoming tender and flavorful after simmering in the coconut milk sauce.",
+                "trivia": "Kinunot is a popular dish in the Bicol region of the Philippines, where it is often served during fiestas and special occasions. The dish is believed to have originated from the Bicolano fishing communities, who used shark meat as a way to make the most out of their catch."
+            }
+        },
+        {
+            "dish_name": "Kusidong Isda",
+            "image_url": "https://drive.google.com/thumbnail?id=1S8dGksYrlXCAp1QUQBEto3afJwWLbaoo",
+            "information": {
+                "description": "Kusidong Isda is a Bicolano fish stew made with fish fillets cooked in coconut milk with ginger, garlic, and chili peppers. The dish is known for its spicy and flavorful sauce, which pairs perfectly with steamed rice.",
+                "trivia": "Kusidong Isda is a popular dish in the Bicol region, where fish is a staple in the local diet. The dish is often served with steamed rice and is enjoyed for its rich and spicy flavors."
+            }
+        },
+        {
+            "dish_name": "Laing",
+            "image_url": "https://drive.google.com/thumbnail?id=1sd0NiQsAUuzxfaUpzZXCEtASGuCGrV9U",
+            "information": {
+                "description": "Laing is a traditional Filipino dish from the Bicol region made with dried taro leaves cooked in coconut milk with chili peppers, shrimp paste, and meat or seafood. The dish is known for its rich and creamy sauce, which is made by simmering the taro leaves in coconut milk until tender.",
+                "trivia": "Laing is a popular dish in the Philippines, especially in the Bicol region where it is believed to have originated. The dish is often served with steamed rice and is enjoyed for its unique flavor and creamy texture."
+            }
+        },
+        {
+            "dish_name": "Pancit Bato",
+            "image_url": "https://drive.google.com/thumbnail?id=1l11Jldi8uE9cTKl6QTtIjb47gG1K_nTf",
+            "information": {
+                "description": "Pancit Bato is a type of Filipino noodle dish from the Bicol region made with fresh noodles, shrimp, pork, and vegetables stir-fried in a savory sauce. The dish is known for its chewy noodles and flavorful sauce, which is made from soy sauce, oyster sauce, and other seasonings.",
+                "trivia": "Pancit Bato is named after the town of Bato in the Bicol region, where the dish is said to have originated. The dish is often served during fiestas and special occasions and is enjoyed for its rich and savory flavors."
+            }
+        },
+        {
+            "dish_name": "Picadillo",
+            "image_url": "https://drive.google.com/thumbnail?id=1JMcQ_PJ_eedc0Btw_9YctKxzh7J0sYJL",
+            "information": {
+                "description": "Picadillo is a traditional Filipino dish made with ground meat (usually pork or beef) cooked with potatoes, carrots, bell peppers, and raisins in a savory tomato sauce. The dish is sweet, savory, and slightly tangy, with a comforting and hearty flavor.",
+                "trivia": "Picadillo is a popular dish in the Philippines, often served as a main course for lunch or dinner. The dish is believed to have Spanish origins, as it is similar to the Spanish and Latin American dish of the same name."
+            }
+        },
+        {
+            "dish_name": "Pinangat",
+            "image_url": "https://drive.google.com/thumbnail?id=178uqADs0lY3y5O2C1ky5GhCRHSI58_4W",
+            "information": {
+                "description": "Pinangat is a Bicolano dish made with taro leaves stuffed with a mixture of fish, shrimp, or meat, tomatoes, ginger, and chili peppers, then wrapped in layers of taro leaves and coconut leaves and cooked in coconut milk. The dish is known for its rich and savory flavor, with the taro leaves infusing the filling with a unique taste.",
+                "trivia": "Pinangat is a popular dish in the Bicol region of the Philippines, where it is often served during fiestas and special occasions. The dish is believed to have originated from the Bicolano practice of wrapping food in leaves for cooking."
+            }
+        },
+        {
+            "dish_name": "Sinanglay",
+            "image_url": "https://drive.google.com/thumbnail?id=1-NyLeSiVCSzIC_-vKVtwLrZKy7vz_pCH",
+            "information": {
+                "description": "Sinanglay is a Filipino dish from the Bicol region made with tilapia fish fillets marinated in calamansi juice and wrapped in pechay leaves, then simmered in coconut milk with garlic, ginger, and chili peppers. The dish is known for its delicate flavor, with the tilapia fillets absorbing the rich and creamy coconut milk sauce.",
+                "trivia": "Sinanglay is a popular dish in the Bicol region, where tilapia fish is abundant. The dish is often served with steamed rice and is enjoyed for its light and refreshing taste."
+            }
+        },
+        {
+            "dish_name": "Sinapot",
+            "image_url": "https://drive.google.com/thumbnail?id=1bn9aqGHxH_9vNw-DQWsVxvqQZdP9mKH1",
+            "information": {
+                "description": "Sinapot is a Bicolano dish made with small fish (such as anchovies or sardines) cooked in coconut milk with ginger, garlic, and chili peppers. The dish is known for its spicy and savory flavor, with the small fish becoming tender and flavorful after simmering in the coconut milk sauce.",
+                "trivia": "Sinapot is a simple yet flavorful dish that highlights the use of fresh and local ingredients in Bicolano cuisine. The dish is often served with steamed rice and is enjoyed for its rich and spicy flavors."
+            }
+        },
+        {
+            "dish_name": "Tilmok",
+            "image_url": "https://drive.google.com/thumbnail?id=1OmemwfGaRAzRUwtL4vjLPQK6XqNnvYAB",
+            "information": {
+                "description": "Tilmok is a traditional Bicolano dish made with grated coconut meat, shrimp, and fish (usually tilapia or bangus) mixed with spices, wrapped in taro leaves, and steamed until cooked. The dish is known for its rich and creamy texture, with the coconut milk and spices infusing the filling with a delicious flavor.",
+                "trivia": "Tilmok is a popular dish in the Bicol region of the Philippines, where it is often served during special occasions and gatherings. The dish is believed to have originated from the Bicolano practice of using coconut milk and spices to flavor and preserve food."
+            }
+        },
+        {
+            "dish_name": "Tinapa Fried Rice",
+            "image_url": "https://drive.google.com/thumbnail?id=1T6kNk2QDZFxHezN5MOKrS6GmJb8tylb9",
+            "information": {
+                "description": "Tinapa Fried Rice is a Filipino dish made with fried rice mixed with flaked smoked fish (tinapa), garlic, onions, and vegetables. The dish is known for its smoky flavor, with the tinapa adding a rich and savory taste to the fried rice.",
+                "trivia": "Tinapa Fried Rice is a popular breakfast dish in the Philippines, often served with fried eggs and a side of vinegar or soy sauce for dipping. The dish is enjoyed for its simple yet flavorful taste."
+            }
+        },
+        {
+            "dish_name": "Tinutungang Manok",
+            "image_url": "https://drive.google.com/thumbnail?id=1tMuYKDVrGoB5uXj47qxGA4oORN6SuRkX",
+            "information": {
+                "description": "Tinutungang Manok is a Filipino dish made with chicken cooked in coconut milk that has been toasted or burned slightly to give it a smoky flavor. The dish is often flavored with garlic, onions, ginger, and chili peppers, giving it a rich and spicy taste.",
+                "trivia": "Tinutungang Manok is a popular dish in the Philippines, especially in the Bicol region where coconut milk is a common ingredient in many dishes. The dish is often served with steamed rice and is enjoyed for its smoky and savory flavor."
+            }
+        }
+    ]
+}

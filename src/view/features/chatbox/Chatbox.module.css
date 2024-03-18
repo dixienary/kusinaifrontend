@@ -1,3 +1,5 @@
+
+
 .container{
     width:100vw;
     height:100vh;
@@ -12,16 +14,16 @@
         color:#8c8c8c;
         display:flex;
         flex-direction:column;
-        align-items:flex-start;
+        align-items: center;
         padding-left:2em;
         padding-top:5em;
         display:none;
-        
     }
     @media only screen and (min-width: 768px) {
         .history{
             display:block;
-            width:250px;
+            width: 35vw;
+            overflow-y: scroll;
         }
       } 
     
@@ -41,7 +43,6 @@
        
 
         .convo{
-            
             box:1px solid white;
             width:100vw;
             background:black;
@@ -102,25 +103,16 @@
                 background:linear-gradient(30deg, #111, black);
                 color:white;
                 /* border:none; */
-                
-              
-
-               
             }
             
-
             .prompt:focus{
                 outline:none;
                 color:white;
             }
           
-          
-
             .promptButton{
-               
                 border-radius:50%;
                 width:5em;
-
             }
                /* Small devices (portrait tablets and large phones, 600px and up) */
             @media only screen and (min-width: 600px) {
@@ -205,3 +197,78 @@
    
   }
 
+
+  .card {
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .cardcontent {
+    padding: 20px;
+    background-color: #000000;
+  }
+  
+  .cardcontent h3 {
+    margin-top: 0;
+    color: #ffffff
+
+  }
+  
+  .cardcontent p {
+    margin-bottom: 10px;
+    color: #ffffff
+  }
+  
+  .cardcontent button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cardcontent button:hover {
+    background-color: #0056b3;
+  }
+  
+  .name {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .description {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .trivia {
+    color: #888;
+  }
+
+  #default-modal {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Add a semi-transparent background */
+  }
+
+  .chat-input {
+    background-color: #333;
+    color: #fff;
+  }

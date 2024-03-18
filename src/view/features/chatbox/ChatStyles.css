@@ -1,0 +1,26 @@
+/* ChatStyles.css */
+
+/* Override font color */
+.custom-chat-container {
+    color: black !important;
+  }
+  
+  /* Override background color */
+  .custom-chat-container .cs-message-list {
+    background-color: black !important;
+  }
+  
+  /* Override chat bubble background color */
+  .cs-message__content {
+    background-color: black !important; /* Change to your desired color */
+    color: white !important;
+  }
+
+  /* Override message bubble background color */
+  .custom-chat-container .chatscope-message {
+    background-color: #3f51b5 !important; /* Change to your desired color */
+  }
+
+  .cs-message__content {
+    border: 1px solid white !important;
+  }
