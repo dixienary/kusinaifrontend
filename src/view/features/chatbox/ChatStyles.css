@@ -14,6 +14,7 @@
   .cs-message__content {
     background-color: black !important; /* Change to your desired color */
     color: white !important;
+    margin-bottom: 15px;
   }
 
   /* Override message bubble background color */
@@ -24,3 +25,13 @@
   .cs-message__content {
     border: 1px solid white !important;
   }
+
+  .cs-message--incoming .cs-message__content {
+    background-color: #008FFF !important;
+    color: #000 !important;
+  }
+
+  .cs-message-list__scroll-wrapper {
+    padding-left: 0px !important;
+  }
+  
