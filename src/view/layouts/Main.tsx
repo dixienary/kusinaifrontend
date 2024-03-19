@@ -2,7 +2,7 @@ import Chatbox from "../features/chatbox/Chatbox"
 
 const Main = () => {
   return (
-    <div style={{ overflow: "visible" }}>
+    <div style={{ overflow: "hidden" }}>
       <Chatbox />
     </div>
   )

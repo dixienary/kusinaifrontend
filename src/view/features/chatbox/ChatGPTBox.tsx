@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
 import {
@@ -14,6 +14,8 @@ import './ChatStyles.css'; // Import your custom CSS file
 
 
 const ChatGPTBox = () => {
+    const messageRef = useRef<HTMLDivElement>(null)
+
     const [messages, setMessages] = useState([
         {
             message: "Hello, what's your available ingredients today?",
@@ -77,33 +79,41 @@ const ChatGPTBox = () => {
         return response.json();
     }
 
+
+    useEffect(() => {
+        const domNode = messageRef.current;
+        if (domNode) {
+            domNode.scrollTop = domNode.scrollHeight;
+        }
+    })
+
     return (
-        <div style={{ display: "flex", flex: "flex-column", height: "100%", width: "100%", marginTop: "55px", padding: "0px 30px 0px 30px", overflowY: "auto" }}>
-            <MainContainer style={{ flexGrow: "100" }}>
-                <ChatContainer className="custom-chat-container">
-                    <MessageList
-                        scrollBehavior="smooth"
-                        typingIndicator={isTyping ? <TypingIndicator content="Kusin-AI is typing" /> : null}
-                    >
-                        {messages.map((message, i) => {
-                            const messageModel = {
-                                message: message.message,
-                                sentTime: message.sentTime,
-                                sender: message.sentTime,
-                                direction: message.sender === "ChatGPT" ? 'incoming' : 'outgoing',
+        <div style={{ display: "flex", flexDirection: "column", height: "100%", width: "100%", marginTop: "55px", padding: "0px 30px 0px 30px", overflowY: "auto" }} >
+            <div ref={messageRef} style={{ height: "100%", width: "100%", overflowY: 'auto' }} >
+                {messages.map((message, i) => {
+                    const messageModel = {
+                        message: message.message,
+                        sentTime: message.sentTime,
+                        sender: message.sentTime,
+                        direction: message.sender === "ChatGPT" ? 'incoming' : 'outgoing',
 
-                            } as MessageModel;
-                            return <Message
-                                key={i} model={messageModel} color={message.sender === "ChatGPT" ? 'blue' : 'white'} />
-                        })}
-                    </MessageList>
-                    <MessageInput placeholder="Send a Message" onSend={handleSendRequest} style={{ backgroundColor: "black" }}
-                        attachButton={false}
-                        inputMode='text'
-                    />
+                    } as MessageModel;
+                    return <Message
+                        key={i} model={messageModel} color={message.sender === "ChatGPT" ? 'blue' : 'white'} />
+                })}
 
-                </ChatContainer>
-            </MainContainer>
+            </div>
+            <MessageList
+                style={{ height: "50px", backgroundColor: "black" }}
+                scrollBehavior="smooth"
+                typingIndicator={isTyping ? <TypingIndicator content="Kusin-AI is typing" style={{ borderRadius: '10px' }} /> : null}
+            >
+
+            </MessageList>
+            <MessageInput placeholder="Send a Message" onSend={handleSendRequest} style={{ backgroundColor: "black", marginTop: "5px" }}
+                attachButton={false}
+                inputMode='text'
+            />
         </div>
     )
 }

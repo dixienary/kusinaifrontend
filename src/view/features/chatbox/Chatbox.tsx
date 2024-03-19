@@ -105,7 +105,7 @@ const Chatbox = () => {
         </div>
         <div className={CSS.box}>
           <ChatGPTBox />
-          <small style={{ color: "white" }}><i>Please input at least 3 ingredients for better results. </i></small>
+          <small style={{ color: "white", textAlign: "center" }}><i>Please input at least 3 ingredients for better results. </i></small>
         </div>
         <div
           id="default-modal"
