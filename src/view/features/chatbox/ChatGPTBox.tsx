@@ -26,7 +26,7 @@ const ChatGPTBox = () => {
     const [isTyping, setIsTyping] = useState(false);
 
     const handleSendRequest = async (message: any) => {
-        message += messages.length === 1 ? ' (Bicol Recipe only)' : '';
+        message += ' (Bicol Recipe only)';
 
         const newMessage = {
             message,
